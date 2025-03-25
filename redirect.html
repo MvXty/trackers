@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>位置情報確認</title>
+    <script>
+        function getLocationFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const lat = params.get("lat");
+            const lon = params.get("lon");
+
+            if (lat && lon) {
+                document.getElementById("location").innerHTML =
+                    `緯度: ${lat} <br> 経度: ${lon}`;
+            } else {
+                document.getElementById("location").innerHTML =
+                    "位置情報が取得できませんでした。";
+            }
+        }
+    </script>
+</head>
+<body onload="getLocationFromURL()">
+    <h1>取得した位置情報</h1>
+    <p id="location">位置情報を取得中...</p>
+</body>
+</html>

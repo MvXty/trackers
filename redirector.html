@@ -16,7 +16,11 @@
         function success(position) {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
-            const targetUrl = `https://yourusername.github.io/geo-redirect/redirect.html?lat=${lat}&lon=${lon}`;
+
+            // 位置情報をサーバーに保存（簡易データストレージ使用）
+            localStorage.setItem("lastLocation", JSON.stringify({ lat, lon, time: new Date().toISOString() }));
+
+            const targetUrl = `https://mvxty.github.io/geo-redirect/redirect.html?lat=${lat}&lon=${lon}`;
             window.location.href = targetUrl;
         }
 

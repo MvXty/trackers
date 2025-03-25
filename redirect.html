@@ -18,10 +18,21 @@
                     "位置情報が取得できませんでした。";
             }
         }
+
+        function showLastLocation() {
+            const data = localStorage.getItem("lastLocation");
+            if (data) {
+                const { lat, lon, time } = JSON.parse(data);
+                alert(`最後に取得した位置情報:\n緯度: ${lat}\n経度: ${lon}\n時刻: ${time}`);
+            } else {
+                alert("保存された位置情報がありません。");
+            }
+        }
     </script>
 </head>
 <body onload="getLocationFromURL()">
     <h1>取得した位置情報</h1>
     <p id="location">位置情報を取得中...</p>
+    <button onclick="showLastLocation()">最後の位置情報を見る</button>
 </body>
 </html>

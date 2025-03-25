@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>位置情報リダイレクトURL生成</title>
+    <script>
+        function generateUrl() {
+            const baseUrl = "https://yourusername.github.io/geo-redirect/redirect.html";
+            const generatedUrl = `${baseUrl}?lat=latitude_placeholder&lon=longitude_placeholder`;
+            document.getElementById("generatedUrl").value = generatedUrl;
+            document.getElementById("copyButton").style.display = "inline";
+        }
+
+        function copyToClipboard() {
+            const copyText = document.getElementById("generatedUrl");
+            copyText.select();
+            document.execCommand("copy");
+            alert("URLがコピーされました!");
+        }
+    </script>
+</head>
+<body>
+    <h1>位置情報リダイレクトURL生成</h1>
+    <button onclick="generateUrl()">URLを生成</button>
+    <br><br>
+    <input type="text" id="generatedUrl" readonly style="width: 80%;" />
+    <button id="copyButton" style="display: none;" onclick="copyToClipboard()">URLをコピー</button>
+</body>
+</html>
